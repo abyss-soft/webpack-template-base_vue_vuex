@@ -1,4 +1,4 @@
-const webpack =  require("webpack");
+const webpack = require("webpack");
 const merge = require("webpack-merge");
 const baseWebpackConfig = require("./webpack.base.conf");
 require("dotenv").config();
@@ -9,12 +9,10 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   mode: "development",
   devtool: "cheap-module-eval-source-map",
   devServer: {
-    contentBase: baseWebpackConfig.externals.paths.dist,
+    historyApiFallback: true,
     port: 8081,
-    overlay: {
-      warnings: true,
-      errors: true
-    }
+    noInfo: true,
+    overlay: true
   },
   plugins: [
     new webpack.DefinePlugin({  // plugin to define global constants
